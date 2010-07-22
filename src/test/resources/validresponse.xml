@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<rsp stat="ok" xmlns:georss="http://www.georss.org/georss">
+  <user token="azfpzT5ah3Ol" located-at="2010-07-22T11:11:05-07:00" readable="true" writable="true">
+    <location-hierarchy timezone="Europe/London" string="23424975|24554868|23416974|44418|22476393">
+      <location best-guess="true">
+        <georss:point>51.50651 -0.096684</georss:point>
+        <label></label>
+        <level>0</level>
+        <level-name>exact</level-name>
+        <located-at>2010-07-22T11:12:25-07:00</located-at>
+        <name>Sumner Street, London, SE1 9</name>
+        <normal-name>Sumner Street</normal-name>
+        <place-id exact-match="false">QM22rLibB5u6n3VLEQ</place-id>
+        <woeid exact-match="false">26788405</woeid>
+        <query>q=Sumner%20Street%2C%20London%2C%20SE1%209</query>
+      </location>
+      <location best-guess="false">
+        <georss:box>51.48259 -0.12636 51.509949 -0.06034</georss:box>
+        <label></label>
+        <level>1</level>
+        <level-name>postal</level-name>
+        <located-at>2010-07-22T11:12:25-07:00</located-at>
+        <name>London, London, England</name>
+        <normal-name>SE1</normal-name>
+        <place-id exact-match="true">QM22rLibB5u6n3VLEQ</place-id>
+        <woeid exact-match="true">26788405</woeid>
+      </location>
+      <location best-guess="false">
+        <georss:box>51.261318 -0.563 51.686031 0.28036</georss:box>
+        <label></label>
+        <level>3</level>
+        <level-name>city</level-name>
+        <located-at>2010-07-22T11:11:05-07:00</located-at>
+        <name>London, Greater London, England</name>
+        <normal-name>London</normal-name>
+        <place-id exact-match="true">.2P4je.dBZgMyQ</place-id>
+        <woeid exact-match="true">44418</woeid>
+      </location>
+      <location best-guess="false">
+        <georss:box>51.286839 -0.51035 51.692322 0.33403</georss:box>
+        <label></label>
+        <level>4</level>
+        <level-name>region</level-name>
+        <located-at>2010-07-22T11:11:05-07:00</located-at>
+        <name>Greater London, England</name>
+        <normal-name>Greater London</normal-name>
+        <place-id exact-match="true">Olm8d2WbApixZWCHrA</place-id>
+        <woeid exact-match="true">23416974</woeid>
+      </location>
+      <location best-guess="false">
+        <georss:box>49.866219 -6.4507 55.811169 1.76333</georss:box>
+        <label></label>
+        <level>5</level>
+        <level-name>state</level-name>
+        <located-at>2010-07-22T11:11:05-07:00</located-at>
+        <name>England, United Kingdom</name>
+        <normal-name>England</normal-name>
+        <place-id exact-match="true">pn4MsiGbBZlXeplyXg</place-id>
+        <woeid exact-match="true">24554868</woeid>
+      </location>
+      <location best-guess="false">
+        <georss:box>49.16209 -13.74222 60.86293 1.76334</georss:box>
+        <label></label>
+        <level>6</level>
+        <level-name>country</level-name>
+        <located-at>2010-07-22T11:11:05-07:00</located-at>
+        <name>United Kingdom</name>
+        <normal-name>United Kingdom</normal-name>
+        <place-id exact-match="true">DevLebebApj4RVbtaQ</place-id>
+        <woeid exact-match="true">23424975</woeid>
+      </location>
+    </location-hierarchy>
+  </user>
+</rsp>
