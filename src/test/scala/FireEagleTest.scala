@@ -3,9 +3,10 @@ import org.specs.util._
 import dispatch._
 import oauth._
 import scala.xml._
-import java.io.File.{separator => Sep}
 
 trait FireEagleMocker extends FireEagle {
+  import java.io.File.{separator => /}
+  
   override def getRequestToken() {
     this.requestToken = Some[Token](Token("0000000000","0000000000000000000000000000000"))
   }
@@ -14,12 +15,21 @@ trait FireEagleMocker extends FireEagle {
     this.accessToken = Some[Token](Token("1111111111","1111111111111111111111111111111"))
   }
   
-  override def getUserLocation(): Option[Elem] = {
+  override def getUserLocation(): Option[User] = {
+    val resp = this.impl_getUserLocationXml()
+    if (resp.isDefined)
+      return Some(User.fromXml(resp))
+    else
+      return None
+  }
+  return this.impl_getUserLocationXml()
+  
+  private def impl_getUserLocationXml(): Option[Elem] = {
     if (this.requestToken.isDefined == true && this.accessToken.isDefined == true)
       Some[Elem](XML.loadFile(System.getProperty("user.dir") + 
-        Sep + "src" + Sep + "test" + Sep + "resources" + Sep + "validresponse.xml"))
+        / + "src" + / + "test" + / + "resources" + / + "validresponse.xml"))
     else
-      None
+      None    
   }
 }
 

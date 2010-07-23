@@ -41,11 +41,10 @@ class FireEagle(val consumer: Consumer) {
     this.accessToken = Some[Token](this.h(this.fe_oauth / "access_token" << Map("oauth_verifier" -> verifier) <@ (this.consumer, this.requestToken.get) as_token))
   }
   
-  def getUserLocation(): Option[scala.xml.Elem] = {
-    if (this.requestToken.isDefined && this.accessToken.isDefined) {
-      Some(XML.loadString(this.h(this.fe / "user" <@ (this.consumer, this.accessToken.get) as_str)))
-    } else {
+  def getUserLocation(): Option[Location] = {
+    if (this.requestToken.isDefined && this.accessToken.isDefined)
+      Some(User.fromXml(XML.loadString(this.h(this.fe / "user" <@ (this.consumer, this.accessToken.get) as_str))))
+    else
       return None
-    }
   }
 }
