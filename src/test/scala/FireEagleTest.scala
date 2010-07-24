@@ -26,8 +26,7 @@ trait FireEagleMocker extends FireEagle {
   
   private def impl_getUserLocationXml(): Option[Elem] = {
     if (this.requestToken.isDefined == true && this.accessToken.isDefined == true)
-      Some[Elem](XML.loadFile(System.getProperty("user.dir") + 
-        / + "src" + / + "test" + / + "resources" + / + "validresponse.xml"))
+      Some[Elem](XML.loadFile(System.getProperty("user.dir") + "src/test/resources/validresponse.xml"))
     else
       None    
   }
