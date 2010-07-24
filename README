@@ -1,4 +1,11 @@
-Fenghuang is a Scala FireEagle library I'm working on. It isn't ready to be
+Fenghuang is a Scala FireEagle [1] library I'm working on. It isn't ready to be
 used, but it will depend on: JodaTime and Databinder Dispatch. It is BDD-style
-unit tested using Specs, and the 'mock traits' pattern I came up with
-<http://tommorris.org/blog/2010/06/26#When:08:29:58>
+unit tested using Specs, and the 'mock traits' pattern I came up with [2].
+
+I may add support for GeoJava, but it is *bloody complicated*. I may just reuse
+the Java FireEagle library classes.
+
+Patches welcome.
+
+[1] <http://fireeagle.yahoo.com/>
+[2] <http://tommorris.org/blog/2010/06/26#When:08:29:58>
