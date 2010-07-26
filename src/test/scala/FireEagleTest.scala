@@ -5,8 +5,6 @@ import oauth._
 import scala.xml._
 
 trait FireEagleMocker extends FireEagle {
-  import java.io.File.{separator => /}
-  
   override def getRequestToken() {
     this.requestToken = Some[Token](Token("0000000000","0000000000000000000000000000000"))
   }
@@ -15,18 +13,17 @@ trait FireEagleMocker extends FireEagle {
     this.accessToken = Some[Token](Token("1111111111","1111111111111111111111111111111"))
   }
   
-  override def getUserLocation(): Option[User] = {
-    val resp = this.impl_getUserLocationXml()
+  override def getUser(): Option[User] = {
+    val resp = this.impl_getUserXml()
     if (resp.isDefined)
-      return Some(User.fromXml(resp))
+      return Some(User.fromXml(resp.get))
     else
       return None
   }
-  return this.impl_getUserLocationXml()
   
-  private def impl_getUserLocationXml(): Option[Elem] = {
+  private def impl_getUserXml(): Option[Elem] = {
     if (this.requestToken.isDefined == true && this.accessToken.isDefined == true)
-      Some[Elem](XML.loadFile(System.getProperty("user.dir") + "src/test/resources/validresponse.xml"))
+      Some[Elem](XML.loadFile(System.getProperty("user.dir") + "/src/test/resources/validresponse.xml"))
     else
       None    
   }
@@ -53,12 +50,12 @@ object FireEagleTest extends Specification {
     
     "load XML" in {
       val fe = new FireEagle("000000000000", "00000000000000000000000000000000") with FireEagleMocker
-      fe.getUserLocation().isDefined mustBe false
+      fe.getUser().isDefined mustBe false
       fe.getRequestToken()
       fe.convertToAccessToken("abcdef")
       
-      val data = fe.getUserLocation()
-      data.isDefined mustBe true
+      val data = fe.getUser()
+      data.getClass.toString mustBe "foo"
     }
   }
 }

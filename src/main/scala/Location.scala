@@ -23,8 +23,10 @@ import org.joda.time.format.ISODateTimeFormat
 class Location {
   var name: Option[String]        = None
   var normalName: Option[String]  = None
-  var latitude: Option[Float]     = None
-  var longitude: Option[Float]    = None
+  /*  var latitude: Option[String]     = None
+  var longitude: Option[String]    = None
+  */
+  var latlong: Option[String]     = None
   var label: Option[String]       = None
   var dateTime: Option[DateTime]  = None
   var query: Option[String]       = None
@@ -36,8 +38,10 @@ object Location {
   def fromXml(xml: Node): Location = new Location {
     name        = Some[String]((xml \ "name").text)
     normalName  = Some[String]((xml \ "normal-name").text)
-    latitude    = Some[Float]((xml \ "georss:point").text.split(" ")(0).toFloat)
-    longitude   = Some[Float]((xml \ "georss:point").text.split(" ")(1).toFloat)
+    //latitude    = Some[String]((xml \ "georss:point").text.split(" ")(0))
+    //longitude   = Some[String]((xml \ "georss:point").text.split(" ")(1))
+    // TODO: match on contents
+    latlong = Some[String]((xml \ "point").text)
     label       = if ((xml \ "label")(0).text.isEmpty) {
                     Some[String]((xml \ "label")(0).text)
                   } else None
