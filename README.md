@@ -1,6 +1,6 @@
 **Fenghuang** is a Scala [FireEagle][] library I'm working on. It isn't ready
-to be used, but it will depend on: [JodaTime][] and [Databinder Dispatch][].
-It is [BDD][]-style unit tested using [Specs][], and the
+to be used, but it will depend on: [JodaTime][] and [Databinder
+Dispatch][dispatch].  It is [BDD][]-style unit tested using [Specs][], and the
 ['mock traits' pattern I came up with][mocktraits].
 
 I may add support for [GeoTools][], but it is *bloody complicated*. I may just
