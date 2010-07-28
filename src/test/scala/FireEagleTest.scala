@@ -55,7 +55,7 @@ object FireEagleTest extends Specification {
       fe.convertToAccessToken("abcdef")
       
       val data = fe.getUser()
-      data.getClass.toString mustBe "foo"
+      data.get.isInstanceOf[User] mustBe true
     }
   }
 }
