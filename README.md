@@ -3,6 +3,8 @@ to be used, but it will depend on: [JodaTime][] and [Databinder
 Dispatch][dispatch].  It is [BDD][]-style unit tested using [Specs][], and the
 ['mock traits' pattern I came up with][mocktraits].
 
+FireEagle is basically location-based services done right.
+
 I may add support for [GeoTools][], but it is *bloody complicated*. I may just
 reuse the [jFireEagle][] library classes.
 
