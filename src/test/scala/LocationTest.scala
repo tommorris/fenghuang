@@ -9,6 +9,7 @@ class LocationTest extends Specification {
       val loc = Location.fromXml((data \\ "location-hierarchy" \ "location")(0))
       loc.name.isDefined mustBe true
       loc.name.get must_== "Sumner Street, London, SE1 9"
+      loc.latitude.isDefined mustBe true
     }
   }
 }
