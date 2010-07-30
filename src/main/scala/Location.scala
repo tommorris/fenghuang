@@ -29,6 +29,8 @@ class Location {
   var woeId: Option[WoeId]        = None
   var placeId: Option[PlaceId]    = None
   var level: Option[Level]        = None
+  var latitude: Option[Float]     = None
+  var longitude: Option[Float]    = None
   
   def parseMetadata(xml: Node) {
     this.name        = Some[String]((xml \ "name").text)
@@ -52,33 +54,31 @@ class Location {
                     }
   }
 }
-class LocationBox extends Location {
-  var xx: Option[String] = None
-  var xy: Option[String] = None
-  var yx: Option[String] = None
-  var yy: Option[String] = None
-}
-class LocationPoint extends Location {
-  var latitude: Option[String]     = None
-  var longitude: Option[String]    = None
+trait LocationBox {
+  var lowerLatitude: Option[Float] = None
+  var lowerLongitude: Option[Float] = None
+  var upperLatitude: Option[Float] = None
+  var upperLongitude: Option[Float] = None
 }
 
 object Location {
   def fromXml(xml: Node): Location = {
     var loc: Option[Location] = None
     if (xml.exists((x: Node) => (x \\ "point").size > 0)) {
-      loc = Some(new LocationPoint {
-          latitude = Some((xml \ "georss:point").text.split(" ")(0))
-          longitude = Some((xml \ "georss:point").text.split(" ")(1))
+      loc = Some(new Location {
+          latitude = Some((xml \ "point").text.split(" ")(0).toFloat)
+          longitude = Some((xml \ "point").text.split(" ")(1).toFloat)
           parseMetadata(xml)
       })
     }
     if (xml.exists((x: Node) => (x \\ "box").size > 0)) {
-      loc = Some(new LocationBox {
-        xx = Some((xml \ "georss:box").text.split(" ")(0))
-        xy = Some((xml \ "georss:box").text.split(" ")(1))
-        yx = Some((xml \ "georss:box").text.split(" ")(2))
-        yy = Some((xml \ "georss:box").text.split(" ")(3))
+      loc = Some(new Location with LocationBox {
+        lowerLatitude = Some((xml \ "box").text.split(" ")(0).toFloat)
+        lowerLongitude = Some((xml \ "box").text.split(" ")(1).toFloat)
+        upperLatitude = Some((xml \ "box").text.split(" ")(2).toFloat)
+        upperLongitude = Some((xml \ "box").text.split(" ")(3).toFloat)
+        latitude = Some((lowerLatitude.get + upperLatitude.get) / 2)
+        longitude = Some((lowerLongitude.get + upperLongitude.get) / 2)
         parseMetadata(xml)
       })
     }
